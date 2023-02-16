@@ -93,6 +93,7 @@ public class SmileyCanvas extends Application {
             // Check if click distance is smaller or equal to valid distance
             if (clickDistance <= validDistance) {
                 rotateEye();
+                visualizeValidDistance(validDistance);
             }
         });
     }
@@ -121,6 +122,17 @@ public class SmileyCanvas extends Application {
 
         // Start the timeline
         timeline.play();
+    }
+
+    public void visualizeValidDistance(double validDistance) {
+        gc.setFill(Color.LIGHTBLUE);
+
+        // gc.fillOval(x - r, y - r, 2 * r, 2 * r);
+        double radius = Math.sqrt(validDistance);
+        double diameter = 2 * radius;
+        gc.fillOval(rightEyeCenterX - radius, rightEyeCenterY - radius, diameter, diameter);
+
+        gc.setFill(Color.BLACK);
     }
 
     public static void main(String[] args) {
